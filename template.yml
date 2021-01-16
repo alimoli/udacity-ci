@@ -5,9 +5,9 @@ Resources:
       SecurityGroups:
         - !Ref InstanceSecurityGroup
       KeyName: udacity
-      # Ubuntu Server 18.04 LTS (HVM), SSD Volume Type
+      # Canonical, Ubuntu, 18.04 LTS
       # Region Availability https://cloud-images.ubuntu.com/locator/ec2/
-      ImageId: 'ami-01996625fff6b8fcc'
+      ImageId: 'ami-09e5e046e0aa878dd'
 
   InstanceSecurityGroup:
     Type: 'AWS::EC2::SecurityGroup'
