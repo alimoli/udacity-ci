@@ -1,21 +1,19 @@
 Resources:
-  Ec2Instance:
-    Type: 'AWS::EC2::Instance'
-    Properties:
-      SecurityGroups:
-        - !Ref InstanceSecurityGroup
-      KeyName: udacity
-      # Amazon Linux 2 AMI (HVM), SSD Volume Type
-      # Current region us-west-2 Oregon
-      # Region Availability https://cloud-images.ubuntu.com/locator/ec2/
-      ImageId: 'ami-0a36eb8fadc976275'
-
   InstanceSecurityGroup:
-    Type: 'AWS::EC2::SecurityGroup'
+    Type: AWS::EC2::SecurityGroup
     Properties:
-      GroupDescription: Enable SSH access via port 22
+      GroupDescription: Allow port 22
       SecurityGroupIngress:
         - IpProtocol: tcp
-          FromPort: '22'
-          ToPort: '22'
+          FromPort: 22
+          ToPort: 22
           CidrIp: 0.0.0.0/0
+  EC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t3.micro
+      SecurityGroups:
+        - Ref: InstanceSecurityGroup
+      KeyName: udacity
+      # [eu-north-1] Amazon Linux 2 AMI (HVM), SSD Volume Type
+      ImageId: ami-02cb52d7ba9887a93
