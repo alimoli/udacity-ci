@@ -1,18 +1,23 @@
 version: 2.1
 
 jobs:
-  create_infrastructure:
+  configure_infrastructure:
     docker:
-      - image: amazon/aws-cli
+      - image: python:3.7-alpine3.11
     steps:
       - checkout
+      - add_ssh_keys:
+          fingerprints: ["6f:e5:65:23:ad:96:77:2f:c3:cd:08:1d:d2:b8:f9:a6"]
       - run:
-          name: Ensure backend infrastructure exist
+          name: Install dependencies
           command: |
-            aws cloudformation deploy \
-              --template-file template.yml \
-              --stack-name udacity-ci-stack
+            apk add --update ansible # install the dependencies needed for playbook
+      - run:
+          name: Configure server
+          command: |
+            ansible-playbook -i ansible/inventory.ini ansible/main-remote.yml
+
 workflows:
   my_workflow:
     jobs:
-      - create_infrastructure
+      - configure_infrastructure
