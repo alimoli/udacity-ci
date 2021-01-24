@@ -15,7 +15,7 @@ jobs:
       - run:
           name: Configure server
           command: |
-            ansible-playbook -i ansible/inventory.ini ansible/main-remote.yml -e 'ansible_python_interpreter=/usr/bin/python3'
+            ansible-playbook ansible/main-remote.yml -i ansible/inventory.ini -e 'ansible_python_interpreter=/usr/local/bin/python3'
 
 workflows:
   my_workflow:
