@@ -1,4 +1,7 @@
 ---
+- name: "check python versions"
+  shell: which python && which python3
+
 - name: "update apt packages."
   become: yes
   apt:
