@@ -8,8 +8,7 @@
 - name: Install dependencies
   yum:
     name:
-      - nodejs
-      - npm
+      - nodejs14
       - pm2
     state: present
   become: true
