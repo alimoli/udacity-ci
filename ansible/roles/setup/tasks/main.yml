@@ -5,10 +5,14 @@
     state: latest
   become: true
 
+- name: Fetch NodeJS repository
+  shell: |
+    curl --silent --location https://rpm.nodesource.com/setup_14.x | bash -
+
 - name: Install dependencies
   yum:
     name:
-      - nodejs14
+      - nodejs
       - pm2
     state: present
   become: true
