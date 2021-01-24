@@ -14,9 +14,12 @@
   yum:
     name:
       - nodejs
-      - pm2
     state: present
   become: true
+
+- name: Install PM2
+  shell: |
+    npm i -g pm2
 
 - name: Create directory
   file:
