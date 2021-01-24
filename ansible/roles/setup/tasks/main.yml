@@ -9,7 +9,13 @@
     name:
       - nodejs
       - npm
-      - pm2
+    state: present
+
+- name: Install pm2
+  yum:
+    name: pm2
+    global: yes
+    production: yes
     state: present
 
 - name: Create directory
