@@ -1,29 +1,29 @@
 ---
 - name: Update packages
   become: yes
-  apk:
+  apt:
     update_cache: yes
 
 - name: Upgrade packages
   become: yes
-  apk:
+  apt:
     upgrade: yes
 
 - name: Remove dependencies that are no longer required
   become: yes
-  apk:
+  apt:
     autoremove: yes
 
 - name: Install dependencies
   become: yes
-  apk:
+  apt:
     name: nodejs,npm
     state: latest
     update_cache: yes
 
 - name: Install pm2
   become: yes
-  apk:
+  apt:
     name: pm2
     global: yes
     production: yes
