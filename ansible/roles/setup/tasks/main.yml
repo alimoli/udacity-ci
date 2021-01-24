@@ -9,13 +9,7 @@
     name:
       - nodejs
       - npm
-    state: present
-
-- name: Install pm2
-  yum:
-    name: pm2
-    global: yes
-    production: yes
+      - pm2
     state: present
 
 - name: Create directory
@@ -31,3 +25,4 @@
 - name: Executing node
   shell: |
     pm2 start ~/web/index.js -f
+  become: true
