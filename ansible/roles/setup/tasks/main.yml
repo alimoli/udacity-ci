@@ -1,35 +1,18 @@
 ---
-- name: Update packages
-  become: yes
+- name: Upgrade all packages
   yum:
-    update_cache: yes
-
-- name: Upgrade packages
-  become: yes
-  yum:
-    upgrade: yes
-
-- name: Remove dependencies that are no longer required
-  become: yes
-  yum:
-    autoremove: yes
+    name: '*'
+    state: latest
 
 - name: Install dependencies
-  become: yes
   yum:
-    name: nodejs,npm
-    state: latest
-    update_cache: yes
-
-- name: Install pm2
-  become: yes
-  yum:
-    name: pm2
-    global: yes
-    production: yes
+    name:
+      - nodejs
+      - npm
+      - pm2
     state: present
 
-- name: Creates directory
+- name: Create directory
   file:
     path: ~/web
     state: directory
