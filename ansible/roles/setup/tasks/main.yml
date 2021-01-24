@@ -1,29 +1,29 @@
 ---
 - name: Update packages
   become: yes
-  apt:
+  yum:
     update_cache: yes
 
 - name: Upgrade packages
   become: yes
-  apt:
+  yum:
     upgrade: yes
 
 - name: Remove dependencies that are no longer required
   become: yes
-  apt:
+  yum:
     autoremove: yes
 
 - name: Install dependencies
   become: yes
-  apt:
+  yum:
     name: nodejs,npm
     state: latest
     update_cache: yes
 
 - name: Install pm2
   become: yes
-  apt:
+  yum:
     name: pm2
     global: yes
     production: yes
