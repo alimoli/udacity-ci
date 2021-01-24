@@ -1,7 +1,4 @@
 ---
-- name: "check python version"
-  shell: python -V
-
 - name: "update apt packages."
   become: yes
   apt:

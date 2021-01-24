@@ -3,23 +3,11 @@ version: 2.1
 jobs:
   configure_infrastructure:
     docker:
-      - image: python:3.7-alpine3.11
+      - image: ansible/ansible:ubuntu1404
     steps:
       - checkout
       - add_ssh_keys:
           fingerprints: ["6f:e5:65:23:ad:96:77:2f:c3:cd:08:1d:d2:b8:f9:a6"]
-      - run:
-          name: Upgrade pip
-          command: |
-            python -m pip install --upgrade pip
-      - run:
-          name: Install dependencies
-          command: |
-            pip3 install ansible
-      - run:
-          name: Check Ansible version
-          command: |
-            ansible --version | grep "python version"
       - run:
           name: Configure server
           command: |
