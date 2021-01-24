@@ -3,6 +3,7 @@
   yum:
     name: '*'
     state: latest
+  become: true
 
 - name: Install dependencies
   yum:
@@ -11,6 +12,7 @@
       - npm
       - pm2
     state: present
+  become: true
 
 - name: Create directory
   file:
@@ -25,4 +27,3 @@
 - name: Executing node
   shell: |
     pm2 start ~/web/index.js -f
-  become: true
